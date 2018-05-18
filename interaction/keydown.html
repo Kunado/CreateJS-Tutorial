@@ -1,0 +1,59 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script>
+    window.addEventListener("load", init);
+
+    function init() {
+
+      // Stageオブジェクトを作成します
+      var stage = new createjs.Stage("myCanvas");
+
+      if (createjs.Touch.isSupported == true) {
+        createjs.Touch.enable(stage);
+      }
+
+      var ball = new createjs.Shape();
+      ball.graphics.beginFill("DarkRed");
+      ball.graphics.drawCircle(0, 0, 50);
+      ball.x = 50;
+      ball.y = 50;
+      var dragPointX;
+      var dragPointY;
+      stage.addChild(ball);
+
+      window.addEventListener("keydown", handleKeydown);
+
+      function handleKeydown(event) {
+        var KeyCode = event.keyCode;
+
+        if (KeyCode === 39) {
+          ball.x += 1;
+        }
+
+        if (KeyCode === 37) {
+          ball.x -= 1;
+        }
+
+        if (KeyCode === 38) {
+          ball.y += 1;
+        }
+
+        if (KeyCode === 40) {
+          ball.y += 1;
+        }
+      }
+
+      createjs.Ticker.addEventListener("tick", handleTick);
+      function handleTick(event) {
+        stage.update();
+      }
+
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas" width="1000" height="1000"></canvas>
+</body>
+</html>

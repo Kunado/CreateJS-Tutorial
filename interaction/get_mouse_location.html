@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script>
+    window.addEventListener("load", init);
+
+    function init() {
+
+      // Stageオブジェクトを作成します
+      var stage = new createjs.Stage("myCanvas");
+
+      var shape = new createjs.Shape();
+      shape.graphics.beginFill("DarkRed");
+      shape.graphics.drawCircle(0, 0, 50);
+      stage.addChild(shape);
+
+      createjs.Ticker.timingMode = createjs.Ticker.RAF;
+      createjs.Ticker.addEventListener("tick", handleTick);
+
+      function handleTick(event){
+        var mx = stage.mouseX;
+        var my = stage.mouseY;
+
+        shape.x = mx;
+        shape.y = my;
+
+        stage.update();
+      }
+
+      stage.update();
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas" width="1000" height="1000"></canvas>
+</body>
+</html>

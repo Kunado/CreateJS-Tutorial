@@ -1,0 +1,42 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script>
+    window.addEventListener("load", init);
+
+    function init() {
+
+      // Stageオブジェクトを作成します
+      var stage = new createjs.Stage("myCanvas");
+
+      var circle = new createjs.Shape();
+      circle.graphics.beginFill("DarkRed");
+      circle.graphics.drawCircle(0, 0, 50);
+      circle.x = 50;
+      circle.y = 50;
+      stage.addChild(circle);
+
+      var rect = new createjs.Shape();
+      rect.graphics.beginFill("blue").drawRect(200, 20, 160, 160);
+      stage.addChild(rect);
+      
+      circle.addEventListener("click", handleCircleClick);
+      rect.addEventListener("click", handleRectClick);
+
+      function handleCircleClick(event) {
+        alert("円がクリックされました");
+      }
+
+      function handleRectClick(event) {
+        alert("四角形がクリックされました");
+      }
+
+      stage.update();
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas" width="1000" height="1000"></canvas>
+</body>
+</html>
