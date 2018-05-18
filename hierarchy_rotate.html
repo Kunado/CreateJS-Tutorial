@@ -1,0 +1,34 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script>
+    window.addEventListener("load", init);
+
+    function init() {
+
+      // Stageオブジェクトを作成します
+      var stage = new createjs.Stage("myCanvas");
+      var container = new createjs.Container();
+      container.x = 300;
+      container.y = 300;
+      stage.addChild(container);
+      for (var i = 0; i < 10; i++){
+        var ball = new createjs.Shape();
+        ball.graphics.beginFill("DarkRed").drawCircle(0, 0, 50);
+        ball.x = 200 * Math.sin(i * 360 / 10 * Math.PI / 180);
+        ball.y = 200 * Math.cos(i * 360 / 10 * Math.PI / 180);
+        container.addChild(ball);
+      }
+      createjs.Ticker.addEventListener("tick", handleTick);
+      function handleTick() {
+        container.rotation += 1;
+        stage.update();
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas" width="1000" height="1000"></canvas>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script>
+    window.addEventListener("load", init);
+
+    function init() {
+
+      // Stageオブジェクトを作成します
+      var stage = new createjs.Stage("myCanvas");
+      
+      var text = new createjs.Text("Hello World!", "24px serif", "DarkRed");
+      text.textAlign = "center";
+      text.x = 100;
+      text.y = 100;
+      stage.addChild(text);
+
+      var text = new createjs.Text("Hello World!", "24px serif", "DarkRed");
+      text.textAlign = "start";
+      text.x = 100;
+      text.y = 150;
+      stage.addChild(text);
+
+      var text = new createjs.Text("Hello World!", "24px serif", "DarkRed");
+      text.textAlign = "end";
+      text.x = 100;
+      text.y = 200;
+      stage.addChild(text);
+
+      var text = new createjs.Text("Hello World!", "24px serif", "DarkRed");
+      text.textBaseline = "top";
+      text.x = 100;
+      text.y = 250;
+      stage.addChild(text);
+
+      var text = new createjs.Text("Hello World!", "24px serif", "DarkRed");
+      text.textBaseline = "middle";
+      text.x = 100;
+      text.y = 300;
+      stage.addChild(text);
+
+      var text = new createjs.Text("Hello World!", "24px serif", "DarkRed");
+      text.textBaseline = "hanging";
+      text.x = 100;
+      text.y = 350;
+      stage.addChild(text);
+
+      var text = new createjs.Text("Hello World!", "24px serif", "DarkRed");
+      text.textBaseline = "hanging";
+      text.x = 100;
+      text.y = 400;
+      text.text = "test";
+      stage.addChild(text);
+
+      stage.update();
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas" width="1000" height="1000"></canvas>
+</body>
+</html>
